@@ -3,6 +3,7 @@ FROM arm64v8/alpine:latest
 WORKDIR /app
 
 
+RUN apk update 
 RUN apk --no-cache add hugo
 
 EXPOSE 1313
