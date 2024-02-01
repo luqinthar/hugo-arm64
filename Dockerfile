@@ -1,10 +1,11 @@
 FROM arm64v8/alpine:latest
 
-RUN apk update && \
-    apk upgrade && \
-    apk --no-cache add hugo && \
-    rm -rf /var/cache/apk/*
+WORKDIR /app
 
-WORKDIR /srv
 
-ENTRYPOINT ["/usr/bin/hugo"]
+RUN apk --no-cache add hugo
+
+EXPOSE 1313
+
+# Command to serve the Hugo site
+CMD ["hugo", "server", "--bind", "0.0.0.0", "--port", "1313", "--appendPort=false"]
